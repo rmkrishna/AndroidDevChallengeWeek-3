@@ -34,6 +34,7 @@ import androidx.compose.foundation.layout.requiredWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.selection.toggleable
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Card
@@ -193,7 +194,10 @@ fun MainScreen(isLight: Boolean = MaterialTheme.colors.isLight) {
 
                 item {
                     columnItems.forEach {
-                        ColumnListLayout(it)
+                        var checkedState: Boolean by remember { mutableStateOf(it.isChecked) }
+                        ColumnListLayout(it, checkedState) {
+                            checkedState = it
+                        }
                         Spacer(modifier = Modifier.requiredHeight(8.dp))
                     }
                 }
@@ -203,7 +207,7 @@ fun MainScreen(isLight: Boolean = MaterialTheme.colors.isLight) {
 }
 
 @Composable
-fun ColumnListLayout(item: Item) {
+fun ColumnListLayout(item: Item, isChecked: Boolean, onCheckedChange: (Boolean) -> Unit) {
     Row(
         modifier = Modifier
             .height(64.dp)
@@ -220,7 +224,9 @@ fun ColumnListLayout(item: Item) {
             )
         }
         Column(
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
+                .toggleable(isChecked, onValueChange = onCheckedChange)
         ) {
             Row(
                 modifier = Modifier.padding(end = 16.dp)
@@ -245,19 +251,20 @@ fun ColumnListLayout(item: Item) {
                         style = MaterialTheme.typography.body1
                     )
                 }
-                val checkedState = remember { mutableStateOf(false) }
                 Checkbox(
                     modifier = Modifier
-                        .align(Alignment.CenterVertically)
-                        .clickable {
-                            checkedState.value = !checkedState.value
-                        },
-                    checked = checkedState.value,
-                    onCheckedChange = { checkedState.value = it },
+                        .align(Alignment.CenterVertically),
+                    checked = isChecked,
+                    onCheckedChange = null,
                     colors = CheckboxDefaults.colors(checkmarkColor = MaterialTheme.colors.onSecondary),
                 )
             }
-            Divider(color = Color.Gray, thickness = 1.dp, startIndent = 10.dp, modifier = Modifier.weight(1f))
+            Divider(
+                color = Color.Gray,
+                thickness = 1.dp,
+                startIndent = 10.dp,
+                modifier = Modifier.weight(1f)
+            )
         }
     }
 }
@@ -332,7 +339,7 @@ val rowItems = listOf(
 val columnItems = listOf(
     Item(
         "https://images.pexels.com/photos/3097770/pexels-photo-3097770.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
-        "Monstera"
+        "Monstera", true
     ),
     Item(
         "https://images.pexels.com/photos/4751978/pexels-photo-4751978.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
@@ -356,4 +363,4 @@ val columnItems = listOf(
     )
 )
 
-data class Item(val url: String, val title: String)
+data class Item(val url: String, val title: String, var isChecked: Boolean = false)
