@@ -72,7 +72,7 @@ import dev.chrisbanes.accompanist.glide.GlideImage
 import dev.chrisbanes.accompanist.insets.navigationBarsPadding
 
 @Composable
-fun MainScreen(isLight: Boolean = MaterialTheme.colors.isLight) {
+fun MainScreen() {
     Scaffold(
         modifier = Modifier
             .navigationBarsPadding()

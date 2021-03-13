@@ -53,7 +53,7 @@ import com.example.androiddevchallenge.ui.theme.MyTheme
 import dev.chrisbanes.accompanist.insets.navigationBarsPadding
 
 @Composable
-fun LoginScreen(isLight: Boolean = MaterialTheme.colors.isLight, screenNavigator: () -> Unit) {
+fun LoginScreen(screenNavigator: () -> Unit) {
     Surface(
         color = MaterialTheme.colors.background,
         modifier = Modifier
@@ -83,7 +83,10 @@ fun LoginScreen(isLight: Boolean = MaterialTheme.colors.isLight, screenNavigator
                 textStyle = MaterialTheme.typography.body1,
                 label = { Text("Email address") },
                 placeholder = { Text("Email address") },
-                keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email, imeAction = ImeAction.Next),
+                keyboardOptions = KeyboardOptions(
+                    keyboardType = KeyboardType.Email,
+                    imeAction = ImeAction.Next
+                ),
                 modifier = Modifier
                     .fillMaxWidth()
             )
@@ -141,7 +144,10 @@ fun LoginScreen(isLight: Boolean = MaterialTheme.colors.isLight, screenNavigator
 
             Button(
                 onClick = screenNavigator,
-                modifier = Modifier.padding(horizontal = 16.dp).fillMaxWidth().height(48.dp),
+                modifier = Modifier
+                    .padding(horizontal = 16.dp)
+                    .fillMaxWidth()
+                    .height(48.dp),
                 shape = RoundedCornerShape(percent = 50),
                 colors = ButtonDefaults.buttonColors(
                     backgroundColor = MaterialTheme.colors.secondary
@@ -158,7 +164,7 @@ fun LoginScreen(isLight: Boolean = MaterialTheme.colors.isLight, screenNavigator
 @Composable
 private fun LoginScreenPreview() {
     MyTheme {
-        LoginScreen(false) {
+        LoginScreen {
         }
     }
 }
@@ -168,7 +174,7 @@ private fun LoginScreenPreview() {
 @Composable
 fun LoginDarkPreview() {
     MyTheme(darkTheme = true) {
-        LoginScreen(true) {
+        LoginScreen {
         }
     }
 }
