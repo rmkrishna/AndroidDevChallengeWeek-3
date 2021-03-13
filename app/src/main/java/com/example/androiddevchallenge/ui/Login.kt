@@ -39,6 +39,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.input.ImeAction
@@ -49,6 +50,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.androiddevchallenge.R
 import com.example.androiddevchallenge.ui.theme.MyTheme
 import dev.chrisbanes.accompanist.insets.navigationBarsPadding
 
@@ -67,7 +69,7 @@ fun LoginScreen(screenNavigator: () -> Unit) {
         ) {
 
             Text(
-                text = "Login with email",
+                text = stringResource(R.string.LOGIN_title),
                 modifier = Modifier
                     .paddingFromBaseline(top = 184.dp)
                     .align(Alignment.CenterHorizontally),
@@ -81,8 +83,8 @@ fun LoginScreen(screenNavigator: () -> Unit) {
                 value = emailValue,
                 onValueChange = { emailValue = it },
                 textStyle = MaterialTheme.typography.body1,
-                label = { Text("Email address") },
-                placeholder = { Text("Email address") },
+                label = { Text(stringResource(R.string.COMMON_email_address)) },
+                placeholder = { Text(stringResource(R.string.COMMON_email_address)) },
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Email,
                     imeAction = ImeAction.Next
@@ -96,11 +98,10 @@ fun LoginScreen(screenNavigator: () -> Unit) {
             OutlinedTextField(
                 value = password,
                 onValueChange = { password = it },
-                modifier = Modifier
-                    .fillMaxWidth(),
+                modifier = Modifier.fillMaxWidth(),
                 textStyle = MaterialTheme.typography.body1,
-                label = { Text("Password") },
-                placeholder = { Text("Password (8+ characters)") },
+                label = { Text(stringResource(R.string.COMMON_Password)) },
+                placeholder = { Text(stringResource(R.string.LOGIN_Password_with_condition)) },
                 visualTransformation = PasswordVisualTransformation(),
                 keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
             )
@@ -153,7 +154,7 @@ fun LoginScreen(screenNavigator: () -> Unit) {
                     backgroundColor = MaterialTheme.colors.secondary
                 )
             ) {
-                Text(text = "Log in")
+                Text(text = stringResource(R.string.COMMON_login))
             }
         }
     }

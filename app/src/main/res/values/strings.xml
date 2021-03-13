@@ -11,10 +11,20 @@
       -->
     <string name="app_name">AndroidDevChallenge</string>
 
+    <string name="WELCOME_SCREEN_description">Beautiful home garden solutions</string>
+
+    <string name="LOGIN_title">Login with email</string>
+    <string name="LOGIN_Password_with_condition">Password (8+ characters)</string>
+
     <string name="HOME_menu_home">Home</string>
     <string name="HOME_menu_favorites">Favorites</string>
     <string name="HOME_menu_profile">Profile</string>
     <string name="HOME_menu_cart">Cart</string>
-    <string name="HOME_search">Search</string>
     <string name="HOME_browse_themes">Browse themes</string>
+
+    <string name="COMMON_search">Search</string>
+    <string name="COMMON_create_account">Create account</string>
+    <string name="COMMON_login">Log in</string>
+    <string name="COMMON_email_address">Email address</string>
+    <string name="COMMON_Password">Password</string>
 </resources>

@@ -120,7 +120,7 @@ fun MainScreen() {
                     .padding(horizontal = 16.dp)
                     .fillMaxWidth(),
                 textStyle = MaterialTheme.typography.body1,
-                placeholder = { Text(text = stringResource(R.string.HOME_search)) },
+                placeholder = { Text(text = stringResource(R.string.COMMON_search)) },
                 leadingIcon = {
                     Icon(
                         Icons.Filled.Search,

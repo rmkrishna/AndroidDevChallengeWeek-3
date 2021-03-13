@@ -38,6 +38,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -87,7 +88,7 @@ fun WelcomeContent(
         )
 
         Text(
-            text = "Beautiful home garden solutions",
+            text = stringResource(R.string.WELCOME_SCREEN_description),
             modifier = Modifier
                 .paddingFromBaseline(top = 32.dp, bottom = 40.dp)
                 .wrapContentSize()
@@ -107,7 +108,7 @@ fun WelcomeContent(
             onClick = { },
             modifier = buttonModifier.padding(horizontal = 16.dp)
         ) {
-            Text("Create account", style = TextStyle(color = MaterialTheme.colors.onSecondary))
+            Text(stringResource(R.string.COMMON_create_account), style = TextStyle(color = MaterialTheme.colors.onSecondary))
         }
 
         TextButton(
@@ -115,7 +116,7 @@ fun WelcomeContent(
             onClick = screenNavigator,
             modifier = buttonModifier.padding(start = 16.dp, top = 8.dp, end = 16.dp)
         ) {
-            Text("Login", style = TextStyle(color = if (isLight) pink900 else Color.White))
+            Text(stringResource(R.string.COMMON_login), style = TextStyle(color = if (isLight) pink900 else Color.White))
         }
     }
 }
