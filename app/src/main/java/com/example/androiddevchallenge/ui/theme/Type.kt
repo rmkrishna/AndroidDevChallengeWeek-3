@@ -17,27 +17,50 @@ package com.example.androiddevchallenge.ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.androiddevchallenge.R
+
+private val NunitoSans = FontFamily(
+    Font(R.font.nunitosans_bold, FontWeight.Bold),
+    Font(R.font.nunitosans_light, FontWeight.Light),
+    Font(R.font.nunitosans_semibold, FontWeight.SemiBold),
+)
 
 // Set of Material typography styles to start with
 val typography = Typography(
-    body1 = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 16.sp
-    )
-        /* Other default text styles to override
-    button = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.W500,
-        fontSize = 14.sp
+    h1 = TextStyle(
+        fontFamily = NunitoSans,
+        fontSize = 18.sp,
+        fontWeight = FontWeight.Bold,
     ),
-    caption = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
-        fontSize = 12.sp
-    )
-    */
+    h2 = TextStyle(
+        fontFamily = NunitoSans,
+        fontSize = 14.sp,
+        fontWeight = FontWeight.Bold,
+        letterSpacing = (0.15).sp
+    ),
+    subtitle1 = TextStyle(
+        fontFamily = NunitoSans,
+        fontSize = 16.sp,
+        fontWeight = FontWeight.Light,
+    ),
+    body1 = TextStyle(
+        fontFamily = NunitoSans,
+        fontSize = 14.sp,
+        fontWeight = FontWeight.Light,
+    ),
+    body2 = TextStyle(
+        fontFamily = NunitoSans,
+        fontSize = 12.sp,
+        fontWeight = FontWeight.Light,
+    ),
+    button = TextStyle(
+        fontFamily = NunitoSans,
+        fontSize = 14.sp,
+        fontWeight = FontWeight.SemiBold,
+        letterSpacing = (1).sp
+    ),
 )
